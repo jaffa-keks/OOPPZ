@@ -14,9 +14,9 @@ namespace oop {
 			s->init_links();
 	}
 
-	void Database::load_stops(const std::string& file_name) {
+	bool Database::load_stops(const std::string& file_name) {
 		std::ifstream inp_file(file_name);
-		if (!inp_file) return;
+		if (!inp_file) return false;
 
 		std::string line;
 		while (std::getline(inp_file, line)) {
@@ -28,11 +28,12 @@ namespace oop {
 			stops.push_back(new Stop(s_id, name));
 		}
 		inp_file.close();
+		return true;
 	}
 
-	void Database::load_lines(const std::string& file_name) {
+	bool Database::load_lines(const std::string& file_name) {
 		std::ifstream inp_file(file_name);
-		if (!inp_file) return;
+		if (!inp_file) return false;
 
 		std::string line;
 		while (std::getline(inp_file, line)) {
@@ -48,6 +49,7 @@ namespace oop {
 		inp_file.close();
 
 		init_links();
+		return true;
 	}
 
 	void ps_format1(std::ofstream&, Stop*);

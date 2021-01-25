@@ -13,8 +13,8 @@ namespace oop {
 		void init_links();
 	public:
 
-		void load_stops(const std::string& file_name);
-		void load_lines(const std::string& file_name);
+		bool load_stops(const std::string& file_name);
+		bool load_lines(const std::string& file_name);
 
 		void print_stop(int id);
 		void print_line(const std::string& id);

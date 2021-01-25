@@ -1,0 +1,14 @@
+#include "oop_sys.h"
+
+int main() {
+	oop::Database db;
+	db.load_stops("stajalista.txt");
+	db.load_lines("linije.txt");
+	db.print_stop(154);
+	db.print_line("12");
+	db.line_stats("12");
+
+	std::vector<oop::Route> p = db.least_stops(*(db.get_stop(154)), *(db.get_stop(1025)));
+	std::vector<oop::Route> q = db.least_changes(*(db.get_stop(154)), *(db.get_stop(1025)));
+	return 0;
+}
